@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+</head>
+<body>
+
+<div>Registrera här:
+    <form method="post" action="/register">
+        <div>
+            <p>Username: </p>
+            <input type="text" name="username"/>
+        </div>
+        <p>E-mail: </p>
+        <div>
+            <input type="text" name="email"/>
+        </div>
+        <div>
+            <p>Password: </p>
+            <input type="password" name="password"/>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<span th:text="${InvalidInput}"></span>
+
+
+<div>Logga in här:
+    <span th:text="${IncorrectPasswordOrUsername}"></span>
+    <form method="post" action="/login">
+        <div>
+            <p>Username: </p>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <p>Password: </p>
+            <input type="password" name="password"/>
+        </div>
+        <button type="submit">Log in</button>
+    </form>
+</div>
+
+
+
+</body>
+</html>

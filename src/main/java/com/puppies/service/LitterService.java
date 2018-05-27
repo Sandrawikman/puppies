@@ -1,20 +1,19 @@
 package com.puppies.service;
-
 import com.puppies.domain.Litter;
-
 import java.util.Date;
 import java.util.List;
 
 public interface LitterService {
 
-    Litter createLitter(int userId, String name, Date dateOfBirth); //Ska denna vara här
+    int createLitter(int userId, String litterName, Date dateOfBirth);
+    List<Litter> getLitterList(int userId);
 
-    Litter readLitter(int litterId);
 
-    List<Litter> readLitterByUserId(int userId);
 
-    void updateLitter(int litterId, int userId, String name, Date dateOfBirth);
 
-    void deleteLitter(int litterId);
+
+//    Litter readLitter(int litterId);
+//    void updateLitter(int litterId, int userId, String litterName, Date dateOfBirth);
+//    void deleteLitter(int litterId); Fungerar inte riktigt än av någon superkonstig anledning
 
 }

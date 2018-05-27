@@ -10,12 +10,12 @@ import javax.sql.DataSource;
 import java.sql.*;
 
 @Repository
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositorySQL implements UserRepository {
 
     private DataSource dataSource;
 
     @Autowired
-    public UserRepositoryImpl(@Qualifier("dataSource") DataSource dataSource) {
+    public UserRepositorySQL(@Qualifier("dataSource") DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

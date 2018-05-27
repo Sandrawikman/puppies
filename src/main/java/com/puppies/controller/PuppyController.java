@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -24,22 +25,28 @@ public class PuppyController {
 
     @PostMapping("/puppy")
     public ModelAndView createPuppy(
+            @RequestParam String puppyName,
+            @RequestParam String gender,
             @RequestParam int litterId,
-            @RequestParam String name,
-            @RequestParam String gender) {
-        Puppy puppy = puppyService.createPuppy(litterId, name, gender);
-        return new ModelAndView("").addObject(puppy);
+            HttpSession session) {
+        Puppy puppy = puppyService.createPuppy(litterId, puppyName, gender);
+        return new ModelAndView("redirect:puppies").addObject(puppy);
     }
 
     @GetMapping("/puppy/{id}")
-    public ModelAndView getPuppy(@PathVariable int id) {
+    public ModelAndView getPuppy(
+            @PathVariable int id,
+            HttpSession session) {
         Puppy puppy = puppyService.readPuppy(id);
         return new ModelAndView("").addObject(puppy);
     }
 
     @GetMapping("/puppies")
-    public ModelAndView getPuppiesByLitterId(@RequestParam int litterId) {
-        List<Puppy> puppies = puppyService.readPuppiesByLitterId(litterId);
-        return new ModelAndView("index").addObject(puppies);
+    public ModelAndView getPuppiesByLitterId(
+//            @RequestParam int litterId,
+            HttpSession session) {
+
+        List<Puppy> puppies = puppyService.readPuppiesByLitterId((int) session.getAttribute("litterId"));
+        return new ModelAndView("puppies").addObject("puppyList", puppies);
     }
 }

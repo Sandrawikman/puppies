@@ -14,7 +14,7 @@ public interface PuppyRepository {
 
     List<Puppy> readPuppiesByLitterId(int litterId);
 
-    void updatePuppy(int puppyId, int litterId, String name, String gender);
+    void updatePuppy(int puppyId, int litterId, String puppyName, String gender);
 
     void deletePuppy(int puppyId);
 

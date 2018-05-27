@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service
 public class PuppyServiceImpl implements PuppyService {
-
     private PuppyRepository puppyRepository;
     private WeightRepository weightRepository;
 
@@ -22,15 +21,15 @@ public class PuppyServiceImpl implements PuppyService {
     }
 
     @Override
-    public Puppy createPuppy(int litterId, String name, String gender) {
-        return puppyRepository.createPuppy(litterId, name, gender);
+    public Puppy createPuppy(int litterId, String puppyName, String puppyGender) {
+        return puppyRepository.createPuppy(litterId, puppyName, puppyGender);
     }
 
     @Override
     public Puppy readPuppy(int puppyId) {
         Puppy puppy = puppyRepository.readPuppy(puppyId);
         Weight weight = weightRepository.readLatest(puppyId);
-        puppy.setWeight(weight.getWeight());
+        puppy.setPuppieWeight(weight.getWeight());
         return puppy;
     }
 
@@ -39,14 +38,16 @@ public class PuppyServiceImpl implements PuppyService {
         List<Puppy> puppies = puppyRepository.readPuppiesByLitterId(litterId);
         for (Puppy puppy : puppies) {
             Weight weight = weightRepository.readLatest(puppy.getPuppyId());
-            puppy.setWeight(weight.getWeight());
+            if (weight != null) {
+                puppy.setPuppieWeight(weight.getWeight());
+            }
         }
         return puppies;
     }
 
     @Override
-    public void updatePuppy(int puppyId, int litterId, String name, String gender) {
-        puppyRepository.updatePuppy(puppyId, litterId, name, gender);
+    public void updatePuppy(int puppyId, int litterId, String puppyName, String gender) {
+        puppyRepository.updatePuppy(puppyId, litterId, puppyName, gender);
     }
 
     @Override

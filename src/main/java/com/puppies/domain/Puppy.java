@@ -6,14 +6,14 @@ public class Puppy {
     private int litterId;
     private String puppyName;
     private String puppyGender;
-    private Double weight;
+    private Double puppieWeight;
 
     public Puppy(int puppyId, int litterId, String puppyName, String puppyGender, Double weight) {
         this.puppyId = puppyId;
         this.litterId = litterId;
         this.puppyName = puppyName;
         this.puppyGender = puppyGender;
-        this.weight = weight;
+        this.puppieWeight = puppieWeight;
     }
 
     public int getPuppyId() {
@@ -48,12 +48,12 @@ public class Puppy {
         this.puppyGender = puppyGender;
     }
 
-    public Double getWeight() {
-        return weight;
+    public Double getpuppieWeight() {
+        return puppieWeight;
     }
 
-    public void setWeight(Double weight) {
-        this.weight = weight;
+    public void setPuppieWeight(Double weight) {
+        this.puppieWeight = weight;
     }
 
 }

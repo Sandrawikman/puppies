@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
-    <title>Logged in</title>
+    <title>Puppies</title>
 </head>
 <body>
 
@@ -12,38 +12,12 @@
     <h3 th:text="'LitterId is ' + ${session.litterId} + '!'"></h3>
 </div>
 
-
-<div>Add litter
-    <form method="post" action="/litter">
-        <div>
-            <p>Litter name: </p>
-            <input type="text" name="litterName" placeholder="A-kullen.."/>
-        </div>
-        <p>Date of birth: </p>
-        <div>
-            <input type="date" name="dateOfBirth"/>
-        </div>
-        <div>
-            <input type="hidden" name="userId"/>
-        </div>
-
-        <button type="submit">add litter</button>
-    </form>
-</div>
-
-
 <table>
-    <tr>
-        <td>test</td>
-        <td>test</td>
-    </tr>
-    <tr th:each="litter : ${litterList}">
-        <td th:text="${litter.litterName}"></td>
-        <td>test</td>
+    <tr th:each="puppy : ${puppyList}">
+        <td th:text="${puppy.puppyName}"/>
+        <td th:text="${puppy.puppyGender}"/>
     </tr>
 </table>
-
-<p th:each="litter : ${litterList}"/>
 
 <div>Add puppy
     <form method="post" action="/puppy">

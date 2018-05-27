@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class WeightRepositoryImpl implements WeightRepository {
+public class WeightRepositorySQL implements WeightRepository {
 
     private DataSource dataSource;
 
     @Autowired
-    public WeightRepositoryImpl(@Qualifier("dataSource") DataSource dataSource) {
+    public WeightRepositorySQL(@Qualifier("dataSource") DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

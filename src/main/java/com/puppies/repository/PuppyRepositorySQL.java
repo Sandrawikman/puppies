@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class PuppyRepositoryImpl implements PuppyRepository {
+public class PuppyRepositorySQL implements PuppyRepository {
 
     private DataSource dataSource;
 
     @Autowired
-    public PuppyRepositoryImpl(@Qualifier("dataSource") DataSource dataSource) {
+    public PuppyRepositorySQL(@Qualifier("dataSource") DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -91,13 +91,13 @@ public class PuppyRepositoryImpl implements PuppyRepository {
     }
 
     @Override
-    public void updatePuppy(int puppyId, int litterId, String name, String gender) {
+    public void updatePuppy(int puppyId, int litterId, String puppyName, String gender) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement(
                      "UPDATE puppy SET (idLitter = ?, Name = ?, Gender = ?) WHERE (idPuppy = ?)")) {
 
             ps.setInt(1, litterId);
-            ps.setString(2, name);
+            ps.setString(2, puppyName);
             ps.setString(3, gender);
             ps.setInt(4, puppyId);
             ps.executeQuery();

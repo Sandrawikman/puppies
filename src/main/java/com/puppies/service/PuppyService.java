@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PuppyService {
 
-    Puppy createPuppy(int litterId, String name, String gender);
+    Puppy createPuppy(int litterId, String puppyName, String puppyGender);
 
     Puppy readPuppy(int puppyId);
 
